@@ -4,7 +4,6 @@ import {
   getTransactionDetails,
   getTransactionDetailsV2,
   getTransactionStatus,
-  Transaction,
   TransactionDetails,
   TransactionStatus,
 } from "../../utils/etherscan";
@@ -37,11 +36,12 @@ const TransactionDetailsPage = ({
   console.log({ timeStamp });
 
   return (
-    <div>
-      <h1>Transaction Details</h1>
-      <div>
-        BlockNumber:
+    <div className="p-3 text-light bg-dark vh-100">
+      <h3>Transaction Details</h3>
+      <div className="mb-2">
+        Block:
         <Link
+          className="m-2"
           target="_blank"
           rel="noopener noreferrer"
           href={`https://etherscan.io/block/${parseInt(
@@ -51,22 +51,21 @@ const TransactionDetailsPage = ({
           {parseInt(transaction.blockNumber)}
         </Link>
       </div>
-      <div>Value: {getValue()} ETH</div>
-      {/* <div>
-        Timestamp:{" "}
-        {new Date(Number(transaction.timeStamp) * 1000).toLocaleString()}
-      </div> */}
-      <div>
+      <div className="mb-2">Value: {getValue()} ETH</div>
+
+      <div className="mb-2">
         Transaction Fees:{" "}
         {formatEther(BigInt(transaction.gasPrice) * BigInt(gasUsed))} ETH
       </div>
-      <div>
+      <div className="mb-2">
         Status:{" "}
-        {status?.isError === "1"
-          ? `Failed transaction: ${status.errDescription}`
-          : "Success"}
+        {status?.isError === "1" ? (
+          <div className="badge text-bg-danger">{`Failed transaction: ${status.errDescription}`}</div>
+        ) : (
+          <div className="badge text-bg-success">Success</div>
+        )}
       </div>
-      <div suppressHydrationWarning>
+      <div className="mb-2" suppressHydrationWarning>
         Date: {new Date(Number(timeStamp) * 1000).toLocaleString()}
       </div>
     </div>

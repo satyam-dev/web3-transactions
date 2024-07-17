@@ -48,7 +48,7 @@ export const getTransactions = async (
           sort: "desc",
           apiKey: ETHERSCAN_API_KEY,
           page: 1,
-          offset: 20,
+          offset: 100,
         },
       }
     );
@@ -177,7 +177,7 @@ export const getTransactionDetailsV2 = async (
           sort: "desc",
           apiKey: ETHERSCAN_API_KEY,
           page: 1,
-          offset: 20,
+          offset: 100,
         },
       }
     );

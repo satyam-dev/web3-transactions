@@ -46,10 +46,18 @@ const TransactionsPage = ({
     setSortedTransactions(sorted);
   };
   return (
-    <div className="tbl-content">
-      <h1>Transactions for Address: {address}</h1>
-      <h2>Balance: {trimFromEnd(formatEther(balance), 9)} ETH</h2>
-      <table>
+    <div className="p-3 bg-dark vh-100 overflow-y-scroll">
+      <h3 className="text-light">
+        Transactions for Address:
+        <div className="badge text-bg-success m-2">{address}</div>
+      </h3>
+      <h4 className="text-light">
+        Balance:
+        <div className="badge text-bg-info m-2">
+          {trimFromEnd(formatEther(balance), 9)} ETH
+        </div>
+      </h4>
+      <table className="table table-dark table-striped table-hover">
         <thead>
           <tr>
             <th>Hash</th>
