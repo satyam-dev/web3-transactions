@@ -1,4 +1,3 @@
-// pages/_app.tsx
 import { useEffect } from "react";
 import "../styles/global.css";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import bootstrap CSS
