@@ -69,8 +69,18 @@ const TrasactionTable = ({
           <th>Hash</th>
           <th>From</th>
           <th>To</th>
-          <th onClick={() => onSortTransaction("value")}>Value (ETH)</th>
-          <th onClick={() => onSortTransaction("timestamp")}>Timestamp</th>
+          <th
+            className="cursor-pointer"
+            onClick={() => onSortTransaction("value")}
+          >
+            Value (ETH) ↓↑
+          </th>
+          <th
+            className="cursor-pointer"
+            onClick={() => onSortTransaction("timestamp")}
+          >
+            Timestamp ↓↑
+          </th>
           <th>Transaction fees(ETH)</th>
         </tr>
       </thead>
