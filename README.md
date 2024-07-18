@@ -13,6 +13,9 @@ This project includes:
 https://demo-web3-transactions.netlify.app/transactions/0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae 
 You can try any other valid ETH address and see similar results
 
+![web3-transactions-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/0f3400cb-45fb-4e70-b73b-c28e9e63d26b)
+
+
 ## Libraries and dependencies:
 react-responsive": "^10.0.0" - Makes it easier to creave responsive layouts.
 "bootstrap": "^5.3.3" - UI components for quick development
