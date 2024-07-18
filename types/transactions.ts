@@ -30,13 +30,8 @@ export interface GetUsedGasParams {
 
 export interface TransactionDetails {
   value: string;
-
-  gas: string;
   gasPrice: string;
-  maxFeePerGas: string;
-  maxPriorityFeePerGas: string;
   blockNumber: string;
-  hash: string;
   to: string;
 }
 
