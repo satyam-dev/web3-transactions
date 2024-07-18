@@ -13,7 +13,11 @@ This project includes:
 https://demo-web3-transactions.netlify.app/transactions/0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae 
 You can try any other valid ETH address and see similar results
 
-![web3-transactions-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/0f3400cb-45fb-4e70-b73b-c28e9e63d26b)
+### Desktop View
+![desktop_view](https://github.com/user-attachments/assets/5391e073-f72e-4b76-892c-ab8b662f0176)
+
+### Mobile
+![mobile_screen](https://github.com/user-attachments/assets/2273f8bd-fbd3-4d7e-9292-cef646a1244a)
 
 
 ## Libraries and dependencies:
