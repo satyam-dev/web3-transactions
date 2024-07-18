@@ -21,13 +21,13 @@ You can try any other valid ETH address and see similar results
 
 
 ## Libraries and dependencies:
-react-responsive": "^10.0.0" - Makes it easier to creave responsive layouts.
-"bootstrap": "^5.3.3" - UI components for quick development
-"ethers": "^6.13.1" - Lot of good modules to help you make web3 apps quickly
-"axios": "^1.7.2" - For API call
+- `"react-responsive": "^10.0.0"` - Makes it easier to creave responsive layouts.
+- `"bootstrap": "^5.3.3"` - UI components for quick development
+- `"ethers": "^6.13.1"` - Lot of good modules to help you make web3 apps quickly
+- `"axios": "^1.7.2"` - For API call
 
 
-## Limitations
+## Limitations/Coming Soon
 
 1. Only supports Ethereum addresses
 2. Can add unit tests for robust development
