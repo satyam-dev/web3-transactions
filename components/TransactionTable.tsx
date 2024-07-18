@@ -2,6 +2,7 @@ import Link from "next/link";
 import { trimFromCenter, trimFromEnd } from "../utils/format";
 import { formatEther } from "ethers";
 import { Transaction } from "../types/transactions";
+import { useMediaQuery } from "react-responsive";
 
 interface TransactionTableProps {
   transactions: Transaction[];
@@ -13,6 +14,53 @@ const TrasactionTable = ({
 }: TransactionTableProps) => {
   const getDateFromTimeStamp = (timeStamp: string) =>
     new Date(Number(timeStamp) * 1000).toLocaleString();
+
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 800px)",
+  });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 800px)" });
+
+  if (isTabletOrMobile) {
+    return (
+      <div>
+        {transactions.map((tx) => (
+          <div key={tx.hash} className="card mb-2 bg-dark border-light ">
+            <ul className="list-group list-group-flush ">
+              <li className="list-group-item bg-dark text-light">
+                From: {tx.from}
+              </li>
+              <li className="list-group-item bg-dark text-light">
+                To: {tx.to}
+              </li>
+
+              <li className="list-group-item bg-dark text-light">
+                Amount: {formatEther(tx.value)}
+              </li>
+              <li
+                suppressHydrationWarning
+                className="list-group-item bg-dark text-light"
+              >
+                Date: {formatEther(tx.value)}
+              </li>
+              <li className="list-group-item bg-dark text-light">
+                Transaction const:{" "}
+                {formatEther(BigInt(tx.gasUsed) * BigInt(tx.gasPrice))}
+              </li>
+            </ul>
+            <div className="card-body">
+              <Link
+                className="card-link"
+                title={tx.hash}
+                href={`/transaction/${tx.hash}`}
+              >
+                {tx.hash}
+              </Link>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <table className="table table-dark table-striped table-hover">
