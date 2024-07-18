@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Transaction } from "../types/transactions";
+import { formatEther } from "ethers";
 
 const useSort = (transactions: Transaction[]) => {
   const [sortField, setSortField] = useState("");
@@ -15,7 +16,7 @@ const useSort = (transactions: Transaction[]) => {
     const sorted = [...transactions].sort((a, b) => {
       let comparison = 0;
       if (field === "value") {
-        comparison = a > b ? 1 : -1;
+        comparison = +formatEther(a.value) > +formatEther(b.value) ? 1 : -1;
       } else if (field === "timestamp") {
         comparison = Number(a.timeStamp) > Number(b.timeStamp) ? 1 : -1;
       }
