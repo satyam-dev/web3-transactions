@@ -1,14 +1,15 @@
-// pages/transaction/[hash].tsx
 import { GetServerSideProps } from "next";
 import {
-  getTransactionDetails,
-  getTransactionDetailsV2,
+  getTransactionDetailsFromBlockNumber,
+  getTransactionDetailsFromHash,
   getTransactionStatus,
-  TransactionDetails,
-  TransactionStatus,
 } from "../../utils/etherscan";
 import { formatEther } from "ethers";
 import Link from "next/link";
+import {
+  TransactionDetails,
+  TransactionStatus,
+} from "../../types/transactions";
 
 interface TransactionDetailsProps {
   transaction: TransactionDetails | null; // Ensure transaction can be null
@@ -75,19 +76,21 @@ const TransactionDetailsPage = ({
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { hash } = context.params!;
   try {
-    const transaction = await getTransactionDetails(hash as string);
-    const status = await getTransactionStatus(hash as string);
-    const transactionV2 = await getTransactionDetailsV2(
-      transaction.to,
-      parseInt(transaction.blockNumber)
+    const transactionFromHash = await getTransactionDetailsFromHash(
+      hash as string
     );
+    const status = await getTransactionStatus(hash as string);
+    const transactionFromBlock = await getTransactionDetailsFromBlockNumber(
+      transactionFromHash.to,
+      parseInt(transactionFromHash.blockNumber)
+    ); // To get timestamp and gas used since according to assessment requirement we need to cater for these two on details page
 
     return {
       props: {
-        transaction: transaction || null, // Handle case where transaction might be undefined
+        transaction: transactionFromHash || null, // Handle case where transaction might be undefined
         status: status || null,
-        timeStamp: transactionV2.timeStamp,
-        gasUsed: transactionV2.gasUsed,
+        timeStamp: transactionFromBlock.timeStamp,
+        gasUsed: transactionFromBlock.gasUsed,
       },
     };
   } catch (error) {

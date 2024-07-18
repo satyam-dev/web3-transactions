@@ -1,14 +1,10 @@
-// pages/transactions/[address].tsx
 import { GetServerSideProps } from "next";
-import {
-  getTransactions,
-  getBalance,
-  Transaction,
-} from "../../utils/etherscan";
+import { getTransactions, getBalance } from "../../utils/etherscan";
 import Link from "next/link";
 import { formatEther } from "ethers";
 import { trimFromCenter, trimFromEnd } from "../../utils/format";
 import { useState } from "react";
+import { Transaction } from "../../types/transactions";
 
 interface TransactionProps {
   address: string;
