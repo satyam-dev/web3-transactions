@@ -14,6 +14,8 @@ https://demo-web3-transactions.netlify.app/transactions/0xde0b295669a9fd93d5f28d
 
 You can try any other valid ETH address and see similar results. Find more addresses [here](https://etherscan.io/)
 
+**NOTE: Etherscan APIs crash sometimes because of busy network. Please reload the app if you see 404.**
+
 ### Desktop View
 ![desktop_view](https://github.com/user-attachments/assets/5391e073-f72e-4b76-892c-ab8b662f0176)
 
