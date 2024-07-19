@@ -1,10 +1,11 @@
 import { GetServerSideProps } from "next";
 import { getTransactions, getBalance } from "../../utils/etherscan";
 import { formatEther } from "ethers";
-import { trimFromEnd } from "../../utils/format";
+import { trimFromCenter, trimFromEnd } from "../../utils/format";
 import { Transaction } from "../../types/transactions";
 import useSort from "../../hooks/useSort";
 import TransactionTable from "../../components/TransactionTable";
+import { useMediaQuery } from "react-responsive";
 
 interface TransactionPageProps {
   address: string;
@@ -19,12 +20,15 @@ const TransactionsPage = ({
 }: TransactionPageProps) => {
   const { shouldSortTransactions: sortTransactions, sortedTransactions } =
     useSort(transactions);
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 600px)" });
 
   return (
     <div className="p-3 bg-dark vh-100 overflow-y-scroll">
       <h3 className="text-light">
         Transactions for Address:
-        <div className="badge text-bg-success m-2">{address}</div>
+        <div className="badge text-bg-success m-2">
+          {isTabletOrMobile ? trimFromCenter(address, 10) : address}
+        </div>
       </h3>
       <h4 className="text-light">
         Balance:

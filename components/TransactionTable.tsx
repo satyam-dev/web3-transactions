@@ -15,9 +15,6 @@ const TrasactionTable = ({
   const getDateFromTimeStamp = (timeStamp: string) =>
     new Date(Number(timeStamp) * 1000).toLocaleString();
 
-  const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-width: 800px)",
-  });
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 800px)" });
 
   if (isTabletOrMobile) {
